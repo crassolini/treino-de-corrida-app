@@ -1,7 +1,9 @@
-.toolbar-icon {
-  padding: 0 14px;
+:host {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.toolbar {
-  flex: 1 1 auto;
+main {
+  flex: 1 0 auto;
 }

@@ -9,11 +9,17 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { HeaderComponent } from './components/header/header.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FormCorridaComponent } from './form-corrida/form-corrida.component';
+import { FormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    FooterComponent,
+    FormCorridaComponent,
 
   ],
   imports: [
@@ -21,9 +27,11 @@ import { DataTableComponent } from './components/data-table/data-table.component
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule, MatIconModule, MatButtonModule,
-    DataTableComponent
+    DataTableComponent,
+    FormsModule,
+    NgxMaskDirective, NgxMaskPipe,
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
