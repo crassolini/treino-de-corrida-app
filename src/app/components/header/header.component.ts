@@ -8,6 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class HeaderComponent {
   isHideBtnAdicionar = false;
+  isHideListaCorridas = false;
 
   constructor(private router: Router) {
     router.events.subscribe((val) => {
@@ -16,6 +17,11 @@ export class HeaderComponent {
           this.isHideBtnAdicionar = true;
         } else {
           this.isHideBtnAdicionar = false;
+        }
+        if (val.url == '/lista-corridas') {
+          this.isHideListaCorridas = true;
+        } else {
+          this.isHideListaCorridas = false;
         }
       }
     });

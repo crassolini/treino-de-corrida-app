@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="row">
-      <app-titulo-pagina title="Cadastro de Corrida"></app-titulo-pagina>
+      <h1>Edição de Corrida</h1>
     </div>
-    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+    <form class="col s12" (submit)="onSubmit()">
       <div class="row">
         <div class="input-field col s12">
-          <select [(ngModel)]="this.corrida.tipo">
+          <select>
             <option value="" disabled selected>Escolha o tipo de treino</option>
             <option value="1">Intervalado</option>
             <option value="2">Longo</option>
@@ -19,33 +19,32 @@
       </div>
       <div class="row">
         <div class="input-field col s6 m3">
-          <input id="data-inicial" #dataInicio="ngModel" type="text" class="datepicker" [(ngModel)]="this.corrida.dataInicio" />
+          <input id="data-inicial" type="text" class="datepicker" value=""/>
           <label for="data-inicial">Data Inicial</label>
         </div>
 
         <div class="input-field col s6 m3">
-          <input id="hora-inicial" #horaInicio="ngModel" type="text" class="timepicker" [(ngModel)]="this.corrida.horaInicio" />
+          <input id="hora-inicial" type="text" class="timepicker" />
           <label for="hora-inicial">Hora Inicial</label>
         </div>
 
         <div class="input-field col s6 m3">
-          <input id="data-final" #dataFinal="ngModel" type="text" class="datepicker" [(ngModel)]="this.corrida.dataFinal" />
+          <input id="data-final" type="text" class="datepicker" />
           <label for="data-final">Data Final</label>
         </div>
 
         <div class="input-field col s6 m3">
-          <input id="hora-final" #horaFinal="ngModel" type="text" class="timepicker" [(ngModel)]="this.corrida.horaFinal" />
+          <input id="hora-final" type="text" class="timepicker" />
           <label for="hora-final">Hora Final</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m6">
-          <input id="distancia-percorrida" #distancia="ngModel" type="text" mask="separator.1" thousandSeparator="." decimalMarker=","
-            [(ngModel)]="this.corrida.distancia" />
+          <input id="distancia-percorrida" type="text" mask="separator.1" thousandSeparator="." decimalMarker="," />
           <label for="distancia-percorrida">Distância Percorrida (Km)</label>
         </div>
         <div class="input-field col s12 m6">
-          <input id="frequencia-cardiaca" #fcm="ngModel" type="text" mask="000" [(ngModel)]="this.corrida.fcm" />
+          <input id="frequencia-cardiaca" type="text" mask="000" />
           <label for="frequencia-cardiaca">Frequência Cardíaca Média (Batimentos/minuto)</label>
         </div>
       </div>

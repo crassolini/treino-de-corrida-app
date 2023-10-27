@@ -1,40 +1,24 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as M from 'materialize-css';
-import { NgForm } from '@angular/forms';
-import { Corrida } from '../model/corrida';
 
 @Component({
-  selector: 'app-form-corrida',
-  templateUrl: './form-corrida.component.html',
-  styleUrls: ['./form-corrida.component.css']
+  selector: 'app-edit-corrida',
+  templateUrl: './edit-corrida.component.html',
+  styleUrls: ['./edit-corrida.component.css']
 })
-export class FormCorridaComponent {
+export class EditCorridaComponent {
 
-  corrida!: Corrida;
-
-  isSubmitted!: boolean;
-  isShowMessage: boolean = false;
-  isSuccess!: boolean;
-  message!: string;
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
 
-    this.preparaFormSelect();
-    this.preparaDatepicker();
-    this.preparaTimepicker();
-  }
+    let idParam: number = +this.route.snapshot.paramMap.get('id')!;
+    alert('Id recebido por parâmetro de rota: ' + idParam);
 
-  onSubmit() {
-    alert('Corrida gravada com sucesso!');
-  }
-
-  private preparaFormSelect() {
     let elems = document.querySelectorAll('select');
     M.FormSelect.init(elems);
-  }
 
-  private preparaDatepicker() {
     let datePicker = document.querySelectorAll('.datepicker');
     let datePickerOptions = {
       format: "dd/mm/yyyy",
@@ -50,9 +34,7 @@ export class FormCorridaComponent {
       }
     };
     M.Datepicker.init(datePicker, datePickerOptions);
-  }
 
-  private preparaTimepicker() {
     let timePicker = document.querySelectorAll('.timepicker');
     let timePickerOptions = {
       twelveHour: false,
@@ -63,5 +45,9 @@ export class FormCorridaComponent {
       }
     };
     M.Timepicker.init(timePicker, timePickerOptions);
+  }
+
+  onSubmit() {
+    alert('Corrida gravada com sucesso!');
   }
 }
