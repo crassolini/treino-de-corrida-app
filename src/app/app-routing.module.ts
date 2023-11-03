@@ -7,7 +7,7 @@ import { EditCorridaComponent } from './components/edit-corrida/edit-corrida.com
 const routes: Routes = [
   { path: 'corrida', component: FormCorridaComponent },
   { path: 'lista-corridas', component: ListaCorridasComponent },
-  { path: 'edit/:id', component: EditCorridaComponent }
+  { path: 'edit', component: FormCorridaComponent }
 ];
 
 @NgModule({
