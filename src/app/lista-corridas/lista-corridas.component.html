@@ -29,15 +29,15 @@
         <td>{{ c.tipo }}</td>
         <td>{{ c.fcm }}</td>
         <td class="right">
-          <a class="waves-effect waves-light"
-            ><i class="material-icons my-icon-size" (click)="onEdit(c)"
+          <a class="waves-effect waves-light" [routerLink]="['/edit']" [state]="c"
+            ><i class="material-icons my-icon-size"
               >edit</i
             ></a
           >
           <a class="waves-effect waves-light"
             ><i
               class="material-icons my-icon-size"
-              (click)="onDelete()"
+              (click)="onDelete(c.id)"
               >delete</i
             ></a
           >

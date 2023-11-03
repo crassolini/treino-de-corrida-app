@@ -1,3 +1,4 @@
+import { CorridaStorageService } from './../services/corrida-storage.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import * as M from 'materialize-css';
 import { NgForm } from '@angular/forms';
@@ -6,27 +7,61 @@ import { Corrida } from '../model/corrida';
 @Component({
   selector: 'app-form-corrida',
   templateUrl: './form-corrida.component.html',
-  styleUrls: ['./form-corrida.component.css']
+  styleUrls: ['./form-corrida.component.css'],
+  providers: [CorridaStorageService]
 })
 export class FormCorridaComponent {
+  @ViewChild('form') form!: NgForm;
 
   corrida!: Corrida;
+  corridas?: Corrida[];
 
   isSubmitted!: boolean;
   isShowMessage: boolean = false;
   isSuccess!: boolean;
   message!: string;
 
-  ngOnInit(): void {
-    this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
+  tiposCorrida = ['Intervalado', 'Longo', 'Fartlek', 'Tempo Run', 'Leve'];
 
-    this.preparaFormSelect();
+  constructor(private corridaService: CorridaStorageService) {}
+
+  ngOnInit(): void {
+    this.corridas = this.corridaService.getCorridas();
+
+    const objeto: Corrida = <Corrida>history.state;
+    const isEditCorrida = (objeto.hasOwnProperty('id') && objeto.hasOwnProperty('dataInicio'));
+    if (isEditCorrida)
+      this.corrida = <Corrida>objeto;
+    else
+      this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
+
+    console.log(objeto);
+
     this.preparaDatepicker();
     this.preparaTimepicker();
   }
 
+  ngAfterViewInit(): void {
+    this.preparaFormSelect();
+  }
+
   onSubmit() {
-    alert('Corrida gravada com sucesso!');
+    this.isSubmitted = true;
+    if (!this.corridaService.isExist(this.corrida.id)) {
+      this.corridaService.save(this.corrida);
+    } else {
+      this.corridaService.update(this.corrida);
+    }
+    this.isShowMessage = true;
+    this.isSuccess = true;
+    this.message = 'Cadastro realizado com sucesso!';
+
+    this.form.reset();
+    this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
+
+    this.corridas = this.corridaService.getCorridas();
+
+    this.corridaService.notifyTotalCorridas();
   }
 
   private preparaFormSelect() {
