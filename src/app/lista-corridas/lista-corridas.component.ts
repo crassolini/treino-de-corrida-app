@@ -44,10 +44,6 @@ export class ListaCorridasComponent implements OnInit {
     this.preparaModal();
   }
 
-  // ngAfterViewInit() {
-  //   this.totalDeCorridas = this.corridas?.length === undefined ? 0 : this.corridas.length;
-  // }
-
   onEdit(corrida: Corrida) {
     let clone = Corrida.clone(corrida);
     this.corrida = clone;
