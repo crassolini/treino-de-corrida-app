@@ -19,6 +19,7 @@ import { EditCorridaComponent } from './components/edit-corrida/edit-corrida.com
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { TotalCorridasComponent } from './lista-corridas/total-corridas/total-corridas.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { TotalCorridasComponent } from './lista-corridas/total-corridas/total-co
 //    ListaCorridasComponent,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent],

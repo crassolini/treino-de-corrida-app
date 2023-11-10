@@ -16,6 +16,19 @@
     </div>
     <form class="col s12" #form="ngForm" (submit)="onSubmit()">
       <div class="row">
+        <div class="input-field col s2 m2">
+          <input
+            id="id"
+            name="id"
+            #id="ngModel"
+            type="text"
+            [(ngModel)]="this.corrida.id"
+            readonly
+          />
+          <label class="active" for="data-inicio">Id</label>
+        </div>
+      </div>
+      <div class="row">
         <div class="input-field col s12">
           <select
             id="tipo-corrida"

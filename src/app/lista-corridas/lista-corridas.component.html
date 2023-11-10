@@ -1,5 +1,16 @@
 <div class="container contact">
   <app-titulo-pagina title="Lista de Corridas"></app-titulo-pagina>
+  <div class="col s12">
+    <div
+      id="msg-login"
+      class="card-panel white-text"
+      [class.red]="!this.isSuccess"
+      [class.blue]="this.isSuccess"
+      *ngIf="this.isShowMessage"
+    >
+      {{ this.message }}
+    </div>
+  </div>
   <!-- Tabela de usuários -->
   <table class="highlight" *ngIf="corridas && corridas!.length > 0">
     <thead>
@@ -37,7 +48,7 @@
           <a class="waves-effect waves-light"
             ><i
               class="material-icons my-icon-size"
-              (click)="onDelete(c.id)"
+              (click)="onDelete(c)"
               >delete</i
             ></a
           >

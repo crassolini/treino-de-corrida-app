@@ -45,4 +45,18 @@ export class Corrida {
 
     return c;
   }
+
+  public static toWS(corrida: Corrida) {
+    let c = new Corrida('', '', '', '', 0, 0, '', 0);
+    c.id = corrida.id;
+    c.dataInicio = corrida.dataInicio;
+    c.horaInicio = corrida.horaInicio;
+    c.dataFinal = corrida.dataFinal;
+    c.horaFinal = corrida.horaFinal;
+    c.distancia = corrida.distancia;
+    c.pace = corrida.pace;
+    c.tipo = corrida.tipo;
+    c.fcm = corrida.fcm;
+    return c;
+  }
 }

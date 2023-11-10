@@ -1,49 +1,85 @@
 {
   "corridas": [
     {
-      "id": 1,
-      "inicio": "20/10/2023",
-      "final": "20/10/2023",
-      "distancia": 21.5,
-      "pace": 5.2,
-      "tipo": "LONGO",
-      "fcm": 154
-    },
-    {
-      "id": 2,
-      "inicio": "20/10/2023",
-      "final": "20/10/2023",
-      "distancia": 2.5,
-      "pace": 5.2,
-      "tipo": "LONGO",
-      "fcm": 154
-    },
-    {
       "id": 3,
-      "inicio": "20/10/2023",
-      "final": "20/10/2023",
-      "distancia": 7.1,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": "5,8",
       "pace": 5.2,
-      "tipo": "LONGO",
-      "fcm": 154
+      "tipo": "Leve",
+      "fcm": "165",
+      "navigationId": 6
     },
     {
       "id": 4,
-      "inicio": "20/10/2023",
-      "final": "20/10/2023",
-      "distancia": 5,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": "10",
       "pace": 5.2,
-      "tipo": "LONGO",
-      "fcm": 154
+      "tipo": "Longo",
+      "fcm": "150",
+      "navigationId": 7
     },
     {
       "id": 5,
-      "inicio": "20/10/2023",
-      "final": "20/10/2023",
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": "8",
+      "pace": 5.2,
+      "tipo": "Intervalado",
+      "fcm": 154,
+      "navigationId": 11
+    },
+    {
+      "id": 6,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
       "distancia": 10.5,
       "pace": 5.2,
-      "tipo": "LONGO",
+      "tipo": "Longo",
       "fcm": 154
+    },
+    {
+      "id": 7,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": 10.5,
+      "pace": 5.2,
+      "tipo": "Longo",
+      "fcm": 154
+    },
+    {
+      "id": "432",
+      "dataInicio": "0010-10-10",
+      "horaInicio": "10:10",
+      "dataFinal": "0010-10-10",
+      "horaFinal": "10:10",
+      "distancia": "10",
+      "pace": 0,
+      "tipo": "Intervalado",
+      "fcm": "10"
+    },
+    {
+      "id": "606",
+      "dataInicio": "2023-11-10",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-10",
+      "horaFinal": "08:00",
+      "distancia": "15",
+      "pace": 0,
+      "tipo": "Tempo Run",
+      "fcm": "144",
+      "navigationId": 4
     }
   ]
 }

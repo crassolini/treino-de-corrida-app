@@ -1,3 +1,5 @@
+import { CorridaRestService } from './../services/corrida-rest.service';
+import { CorridaPromiseService } from './../services/corrida-promise.service';
 import { CorridaStorageService } from './../services/corrida-storage.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import * as M from 'materialize-css';
@@ -8,7 +10,6 @@ import { Corrida } from '../model/corrida';
   selector: 'app-form-corrida',
   templateUrl: './form-corrida.component.html',
   styleUrls: ['./form-corrida.component.css'],
-  providers: [CorridaStorageService]
 })
 export class FormCorridaComponent {
   @ViewChild('form') form!: NgForm;
@@ -23,19 +24,26 @@ export class FormCorridaComponent {
 
   tiposCorrida = ['Intervalado', 'Longo', 'Fartlek', 'Tempo Run', 'Leve'];
 
-  constructor(private corridaService: CorridaStorageService) {}
+  constructor(
+    private corridaStorageService: CorridaStorageService,
+    private corridaPromiseService: CorridaPromiseService,
+    private corridaRestService: CorridaRestService
+  ) {}
 
   ngOnInit(): void {
-    this.corridas = this.corridaService.getCorridas();
+    this.corridas = this.corridaStorageService.getCorridas();
 
     const objeto: Corrida = <Corrida>history.state;
-    const isEditCorrida = (objeto.hasOwnProperty('id') && objeto.hasOwnProperty('dataInicio'));
-    if (isEditCorrida)
-      this.corrida = <Corrida>objeto;
-    else
-      this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
+    const isEditCorrida =
+      objeto.hasOwnProperty('id') && objeto.hasOwnProperty('dataInicio');
 
-    console.log(objeto);
+    if (isEditCorrida) {
+      this.corrida = <Corrida>objeto;
+    } else {
+      this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
+    }
+
+    console.log(this.corrida);
 
     this.preparaDatepicker();
     this.preparaTimepicker();
@@ -47,21 +55,54 @@ export class FormCorridaComponent {
 
   onSubmit() {
     this.isSubmitted = true;
-    if (!this.corridaService.isExist(this.corrida.id)) {
-      this.corridaService.save(this.corrida);
+
+    this.corridaRestService.getById(this.corrida.id).subscribe({
+      next: (res) => {
+        this.update();
+      },
+      error: (e) => {
+        this.insert();
+      },
+    });
+
+    if (!this.corridaStorageService.isExist(this.corrida.id)) {
+      this.corridaStorageService.save(this.corrida);
     } else {
-      this.corridaService.update(this.corrida);
+      this.corridaStorageService.update(this.corrida);
     }
+
     this.isShowMessage = true;
     this.isSuccess = true;
-    this.message = 'Cadastro realizado com sucesso!';
 
-    this.form.reset();
-    this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
+    this.message = 'Corrida cadastrada com sucesso!';
+  }
 
-    this.corridas = this.corridaService.getCorridas();
+  private update() {
+    console.log('Update: ' + this.corrida.id);
+    this.corridaPromiseService
+      .update(this.corrida)
+      .then((data) => {
+        console.log('Atualizado com sucesso na api: ' + JSON.stringify(data));
+      })
+      .catch((error) => {
+        console.log(
+          'Promise (update) rejeitada na api com: ' + JSON.stringify(error)
+        );
+      });
+  }
 
-    this.corridaService.notifyTotalCorridas();
+  private insert() {
+    console.log('Insert: ' + this.corrida.id);
+    this.corridaPromiseService
+      .save(this.corrida)
+      .then((data) => {
+        console.log('Inserido com sucesso na api: ' + JSON.stringify(data));
+      })
+      .catch((error) => {
+        console.log(
+          'Promise (insert) rejeitada na api com: ' + JSON.stringify(error)
+        );
+      });
   }
 
   private preparaFormSelect() {
@@ -72,17 +113,51 @@ export class FormCorridaComponent {
   private preparaDatepicker() {
     let datePicker = document.querySelectorAll('.datepicker');
     let datePickerOptions = {
-      format: "dd/mm/yyyy",
+      format: 'dd/mm/yyyy',
       i18n: {
-        months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-        monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-        weekdays: ["Domingo","Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
-        weekdaysShort: ["Dom","Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
-        weekdaysAbbrev: ["D","S", "T", "Q", "Q", "S", "S"],
+        months: [
+          'Janeiro',
+          'Fevereiro',
+          'Março',
+          'Abril',
+          'Maio',
+          'Junho',
+          'Julho',
+          'Agosto',
+          'Setembro',
+          'Outubro',
+          'Novembro',
+          'Dezembro',
+        ],
+        monthsShort: [
+          'Jan',
+          'Fev',
+          'Mar',
+          'Abr',
+          'Mai',
+          'Jun',
+          'Jul',
+          'Ago',
+          'Set',
+          'Out',
+          'Nov',
+          'Dez',
+        ],
+        weekdays: [
+          'Domingo',
+          'Segunda',
+          'Terça',
+          'Quarta',
+          'Quinta',
+          'Sexta',
+          'Sábado',
+        ],
+        weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+        weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
         cancel: 'Cancelar',
         clear: 'Limpar',
-        done: 'Ok'
-      }
+        done: 'Ok',
+      },
     };
     M.Datepicker.init(datePicker, datePickerOptions);
   }
@@ -94,8 +169,8 @@ export class FormCorridaComponent {
       i18n: {
         cancel: 'Cancelar',
         clear: 'Limpar',
-        done: 'Ok'
-      }
+        done: 'Ok',
+      },
     };
     M.Timepicker.init(timePicker, timePickerOptions);
   }

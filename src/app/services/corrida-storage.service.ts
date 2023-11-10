@@ -3,12 +3,14 @@ import { Corrida } from '../model/corrida';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { WebStorageUtil } from '../util/web-storage-util';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CorridaStorageService {
   corridas!: Corrida[];
   private corridaSource!: BehaviorSubject<number>;
 
-  private CORRIDA_KEY = 'corridas';
+  public CORRIDA_KEY = 'corridas';
 
   constructor() {
     this.corridas = WebStorageUtil.get(this.CORRIDA_KEY);
