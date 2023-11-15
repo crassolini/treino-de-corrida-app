@@ -80,6 +80,17 @@
       "tipo": "Tempo Run",
       "fcm": "144",
       "navigationId": 4
+    },
+    {
+      "id": "873",
+      "dataInicio": "2022-12-31",
+      "horaInicio": "07:00",
+      "dataFinal": "2022-12-31",
+      "horaFinal": "08:00",
+      "distancia": "10",
+      "pace": 0,
+      "tipo": "Longo",
+      "fcm": "140"
     }
   ]
 }

@@ -31,9 +31,9 @@
     <tbody>
       <tr *ngFor="let c of corridas">
         <td>{{ c.id }}</td>
-        <td>{{ c.dataInicio }}</td>
+        <td>{{ c.dataInicio | date: 'd/M/yyyy' }}</td>
         <td>{{ c.horaInicio }}</td>
-        <td>{{ c.dataFinal }}</td>
+        <td>{{ c.dataFinal | date: 'd/M/yyyy' }}</td>
         <td>{{ c.horaFinal }}</td>
         <td>{{ c.distancia }}</td>
         <td>{{ c.pace }}</td>
