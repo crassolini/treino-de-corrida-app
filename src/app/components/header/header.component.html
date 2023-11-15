@@ -8,6 +8,16 @@
         >
         <ul
           class="right hide-on-med-and-down"
+        >
+          <a
+            routerLink="/calculo-pace"
+            class="waves-effect waves-light btn blue darken-2"
+          >
+            <i class="material-icons left">directions_run</i>Calcule seu pace
+          </a>
+        </ul>
+        <ul
+          class="right hide-on-med-and-down"
           [hidden]="this.isHideBtnAdicionar"
         >
           <a
@@ -52,6 +62,11 @@
     <li>
       <a href="#!" routerLink="/corrida"
         ><i class="material-icons">directions_run</i>Adicionar corrida</a
+      >
+    </li>
+    <li>
+      <a href="#!" routerLink="/lista-corridas"
+        ><i class="material-icons">directions_run</i>Listar corridas</a
       >
     </li>
   </ul>

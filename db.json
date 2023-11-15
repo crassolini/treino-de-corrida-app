@@ -68,18 +68,6 @@
       "pace": 0,
       "tipo": "Intervalado",
       "fcm": "10"
-    },
-    {
-      "id": "606",
-      "dataInicio": "2023-11-10",
-      "horaInicio": "07:00",
-      "dataFinal": "2023-11-10",
-      "horaFinal": "08:00",
-      "distancia": "15",
-      "pace": 0,
-      "tipo": "Tempo Run",
-      "fcm": "144",
-      "navigationId": 4
     }
   ]
 }
