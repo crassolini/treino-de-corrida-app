@@ -1,0 +1,49 @@
+{
+  "corridas": [
+    {
+      "id": 1,
+      "inicio": "20/10/2023",
+      "final": "20/10/2023",
+      "distancia": 21.5,
+      "pace": 5.2,
+      "tipo": "LONGO",
+      "fcm": 154
+    },
+    {
+      "id": 2,
+      "inicio": "20/10/2023",
+      "final": "20/10/2023",
+      "distancia": 2.5,
+      "pace": 5.2,
+      "tipo": "LONGO",
+      "fcm": 154
+    },
+    {
+      "id": 3,
+      "inicio": "20/10/2023",
+      "final": "20/10/2023",
+      "distancia": 7.1,
+      "pace": 5.2,
+      "tipo": "LONGO",
+      "fcm": 154
+    },
+    {
+      "id": 4,
+      "inicio": "20/10/2023",
+      "final": "20/10/2023",
+      "distancia": 5,
+      "pace": 5.2,
+      "tipo": "LONGO",
+      "fcm": 154
+    },
+    {
+      "id": 5,
+      "inicio": "20/10/2023",
+      "final": "20/10/2023",
+      "distancia": 10.5,
+      "pace": 5.2,
+      "tipo": "LONGO",
+      "fcm": 154
+    }
+  ]
+}
