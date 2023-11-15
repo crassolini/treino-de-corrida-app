@@ -66,11 +66,23 @@
       "horaInicio": "10:10",
       "dataFinal": "0010-10-10",
       "horaFinal": "11:10",
-      "distancia": "10",
-      "pace": "6:00",
+      "distancia": "11,5",
+      "pace": "5:13",
       "tipo": "Intervalado",
       "fcm": "140",
-      "navigationId": 2
+      "navigationId": 3
+    },
+    {
+      "id": "485",
+      "dataInicio": "2023-11-15",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-15",
+      "horaFinal": "08:30",
+      "distancia": "21",
+      "pace": "4:17",
+      "tipo": "Tempo Run",
+      "fcm": "150",
+      "navigationId": 11
     }
   ]
 }
