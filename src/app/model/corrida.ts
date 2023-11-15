@@ -5,7 +5,7 @@ export class Corrida {
   dataFinal: string;
   horaFinal: string;
   distancia: number;
-  pace: number;
+  pace: string;
   tipo: string;
   fcm: number;
 
@@ -15,7 +15,7 @@ export class Corrida {
     dataFinal: string,
     horaFinal: string,
     distancia: number,
-    pace: number,
+    pace: string,
     tipo: string,
     fcm: number
   ) {
@@ -31,7 +31,7 @@ export class Corrida {
   }
 
   public static clone(corrida: Corrida) {
-    let c = new Corrida('', '', '', '', 0, 0, '', 0);
+    let c = new Corrida('', '', '', '', 0, '', '', 0);
 
     c.id = String(Math.round(Math.random() * 1000));
     c.dataInicio = corrida.dataInicio;
@@ -47,7 +47,7 @@ export class Corrida {
   }
 
   public static toWS(corrida: Corrida) {
-    let c = new Corrida('', '', '', '', 0, 0, '', 0);
+    let c = new Corrida('', '', '', '', 0, '', '', 0);
     c.id = corrida.id;
     c.dataInicio = corrida.dataInicio;
     c.horaInicio = corrida.horaInicio;

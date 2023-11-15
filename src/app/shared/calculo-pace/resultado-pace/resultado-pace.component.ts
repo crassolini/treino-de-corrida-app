@@ -1,3 +1,6 @@
+import { Resposta } from 'src/app/model/resposta';
+import { Corrida } from './../../../model/corrida';
+import { UtilService } from './../../../services/util.service';
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,29 +12,20 @@ export class ResultadoPaceComponent {
 
   @Output() calculoPaceEvent = new EventEmitter<string>();
 
+  constructor(private utilService: UtilService) {}
+
   calcular(distancia: string, hora: string, min: string, seg: string) {
+    let resultado = this.utilService.calculoPacePorValores(Number(distancia), Number(hora), Number(min), Number(seg));
 
-    distancia = distancia.replace(',', '.');
-
-    if (isNaN(Number(distancia)) || isNaN(Number(hora)) || isNaN(Number(min)) || isNaN(Number(seg))) {
-      alert('Resultado impossível de ser calculado. Verifique se as entradas são valores numéricos válidos.');
-      return;
-    }
-
-    let dis = parseFloat(distancia);
-    let nHora = parseFloat(hora);
-    let nMin = parseFloat(min);
-    let nSeg = parseFloat(seg);
-
-    var totalMinutes = nHora * 60 + nMin + nSeg / 60,
-    pace = totalMinutes / dis,
-    paceMinutes = Math.floor(pace),
-    paceSeconds = Math.round((pace - paceMinutes) * 60);
-
-    if (isNaN(Number(paceMinutes)) || isNaN(Number(paceSeconds))) {
+    if (resultado == '') {
       this.calculoPaceEvent.emit('');
     } else {
-      this.calculoPaceEvent.emit('Seu tempo é de ' + paceMinutes + " minutos e " + paceSeconds + ' segundos para percorrer um quilômetro');
+      let pace = resultado.split(':');
+      if (pace[1] === '60') {
+        pace[1] = '00';
+        pace[0] = (Number(pace[0]) + 1).toString();
+      }
+      this.calculoPaceEvent.emit('Seu tempo é de ' + pace[0] + ':' + pace[1].padStart(2, '0') + ' minutos para percorrer um quilômetro');
     }
   }
 }

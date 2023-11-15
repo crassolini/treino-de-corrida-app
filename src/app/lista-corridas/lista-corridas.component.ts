@@ -32,7 +32,7 @@ export class ListaCorridasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
+    this.corrida = new Corrida('', '', '', '', 0, '', '', 0);
 
     //Obtém corridas do serviço
     this.listaCorridas();

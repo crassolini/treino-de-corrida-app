@@ -7,10 +7,10 @@
       "dataFinal": "2023-11-03",
       "horaFinal": "08:00",
       "distancia": "5,8",
-      "pace": 5.2,
+      "pace": "10:21",
       "tipo": "Leve",
       "fcm": "165",
-      "navigationId": 6
+      "navigationId": 8
     },
     {
       "id": 4,
@@ -19,10 +19,10 @@
       "dataFinal": "2023-11-03",
       "horaFinal": "08:00",
       "distancia": "10",
-      "pace": 5.2,
+      "pace": "6:00",
       "tipo": "Longo",
       "fcm": "150",
-      "navigationId": 7
+      "navigationId": 2
     },
     {
       "id": 5,
@@ -31,10 +31,10 @@
       "dataFinal": "2023-11-03",
       "horaFinal": "08:00",
       "distancia": "8",
-      "pace": 5.2,
+      "pace": "7:30",
       "tipo": "Intervalado",
       "fcm": 154,
-      "navigationId": 11
+      "navigationId": 7
     },
     {
       "id": 6,
@@ -42,10 +42,11 @@
       "horaInicio": "07:00",
       "dataFinal": "2023-11-03",
       "horaFinal": "08:00",
-      "distancia": 10.5,
-      "pace": 5.2,
+      "distancia": "10,5",
+      "pace": "5:43",
       "tipo": "Longo",
-      "fcm": 154
+      "fcm": 154,
+      "navigationId": 11
     },
     {
       "id": 7,
@@ -53,21 +54,23 @@
       "horaInicio": "07:00",
       "dataFinal": "2023-11-03",
       "horaFinal": "08:00",
-      "distancia": 10.5,
-      "pace": 5.2,
+      "distancia": "10,5",
+      "pace": "5:43",
       "tipo": "Longo",
-      "fcm": 154
+      "fcm": 154,
+      "navigationId": 13
     },
     {
       "id": "432",
       "dataInicio": "0010-10-10",
       "horaInicio": "10:10",
       "dataFinal": "0010-10-10",
-      "horaFinal": "10:10",
+      "horaFinal": "11:10",
       "distancia": "10",
-      "pace": 0,
+      "pace": "6:00",
       "tipo": "Intervalado",
-      "fcm": "10"
+      "fcm": "10",
+      "navigationId": 4
     }
   ]
 }

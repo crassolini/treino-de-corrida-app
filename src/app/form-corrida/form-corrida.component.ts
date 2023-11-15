@@ -5,6 +5,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import * as M from 'materialize-css';
 import { NgForm } from '@angular/forms';
 import { Corrida } from '../model/corrida';
+import { Resposta } from '../model/resposta';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-form-corrida',
@@ -27,7 +29,8 @@ export class FormCorridaComponent {
   constructor(
     private corridaStorageService: CorridaStorageService,
     private corridaPromiseService: CorridaPromiseService,
-    private corridaRestService: CorridaRestService
+    private corridaRestService: CorridaRestService,
+    private utilService: UtilService
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +43,7 @@ export class FormCorridaComponent {
     if (isEditCorrida) {
       this.corrida = <Corrida>objeto;
     } else {
-      this.corrida = new Corrida('', '', '', '', 0, 0, '', 0);
+      this.corrida = new Corrida('', '', '', '', 0, '', '', 0);
     }
 
     console.log(this.corrida);
@@ -55,6 +58,16 @@ export class FormCorridaComponent {
 
   onSubmit() {
     this.isSubmitted = true;
+
+    let resposta: Resposta = this.utilService.calculoPacePorCorrida(this.corrida);
+    if (resposta.erro) {
+      this.isShowMessage = true;
+      this.isSuccess = false;
+
+      this.message = resposta.mensagem;
+      return;
+    }
+    this.corrida.pace = resposta.valor;
 
     this.corridaRestService.getById(this.corrida.id).subscribe({
       next: (res) => {
