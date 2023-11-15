@@ -1,0 +1,10 @@
+<div class="container contact">
+  <app-titulo-pagina title="Calcule o seu pace"></app-titulo-pagina>
+
+  <app-resultado-pace (calculoPaceEvent)="calcular($event)"></app-resultado-pace>
+
+  <div class="row">
+    <h3>Resultado: {{ this.pace }}</h3>
+  </div>
+
+</div>

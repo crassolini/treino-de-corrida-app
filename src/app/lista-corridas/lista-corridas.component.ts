@@ -39,6 +39,7 @@ export class ListaCorridasComponent implements OnInit {
     //Se não disponível, obtém do local storage
     if (!this.isLoadData) {
       this.corridas = this.corridaStorageService.getCorridas();
+      this.totalDeCorridas = this.corridas?.length === undefined ? 0 : this.corridas.length;
     }
 
     this.preparaModal();
@@ -59,6 +60,7 @@ export class ListaCorridasComponent implements OnInit {
       return;
     }
 
+    this.message = '';
     this.corridaRestService.delete(corrida).subscribe({
       next: (res) => {
         console.log('O id ' + corrida.id + ' foi removido com sucesso');
@@ -71,6 +73,9 @@ export class ListaCorridasComponent implements OnInit {
     this.isSuccess = response;
 
     if (response) {
+      if (this.message == '') {
+        this.message = 'O id ' + corrida.id + ' foi removido com sucesso';
+      }
       console.log('O item foi removido com sucesso!');
     } else {
       console.log('O item não pode ser removido!');
@@ -99,6 +104,8 @@ export class ListaCorridasComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
+        this.corridas = this.corridaStorageService.getCorridas();
+        this.totalDeCorridas = this.corridas?.length === undefined ? 0 : this.corridas.length;
       }
     });
   }

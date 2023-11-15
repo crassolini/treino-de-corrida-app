@@ -9,17 +9,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { TituloPaginaComponent } from './shared/titulo-pagina/titulo-pagina.component';
 import { HeaderComponent } from './components/header/header.component';
-import { DataTableComponent } from './components/data-table/data-table.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormCorridaComponent } from './form-corrida/form-corrida.component';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ListaCorridasComponent } from './lista-corridas/lista-corridas.component';
-import { EditCorridaComponent } from './components/edit-corrida/edit-corrida.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { TotalCorridasComponent } from './lista-corridas/total-corridas/total-corridas.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CalculoPaceComponent } from './shared/calculo-pace/calculo-pace.component';
+import { ResultadoPaceComponent } from './shared/calculo-pace/resultado-pace/resultado-pace.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +28,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     FormCorridaComponent,
-    EditCorridaComponent,
     ListaCorridasComponent,
-    TotalCorridasComponent
+    TotalCorridasComponent,
+    CalculoPaceComponent,
+    ResultadoPaceComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +40,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    DataTableComponent,
     FormsModule,
     NgxMaskDirective,
     NgxMaskPipe,
-//    ListaCorridasComponent,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
