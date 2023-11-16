@@ -77,12 +77,12 @@
       "dataInicio": "2023-11-15",
       "horaInicio": "07:00",
       "dataFinal": "2023-11-15",
-      "horaFinal": "08:30",
-      "distancia": "21",
-      "pace": "4:17",
-      "tipo": "Tempo Run",
+      "horaFinal": "10:10",
+      "distancia": "42",
+      "pace": "4:31",
+      "tipo": "Fartlek",
       "fcm": "150",
-      "navigationId": 11
+      "navigationId": 3
     }
   ]
 }
