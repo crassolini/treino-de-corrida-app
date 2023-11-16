@@ -1,0 +1,12 @@
+<label>Distância: <input #distancia></label>
+<label>Hora: <input type="text" #hora /></label>
+<label>Minutos: <input type="text" #min /></label>
+<label>Segundos: <input type="text" #seg /></label>
+
+<div class="row right-align">
+  <button class="waves-effect waves-light btn blue darken-2"
+    (click)="calcular(distancia.value, hora.value, min.value, seg.value)">
+      Calcular o Pace Médio
+  </button>
+</div>
+

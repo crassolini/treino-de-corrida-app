@@ -1,0 +1,182 @@
+<div class="container">
+  <div class="row">
+    <div class="row">
+      <app-titulo-pagina title="Cadastro de Corrida"></app-titulo-pagina>
+    </div>
+    <div class="col s12">
+      <div
+        id="msg-login"
+        class="card-panel white-text"
+        [class.red]="!this.isSuccess"
+        [class.blue]="this.isSuccess"
+        *ngIf="this.isShowMessage"
+      >
+        {{ this.message }}
+      </div>
+    </div>
+    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+      <div class="row">
+        <div class="input-field col s2 m2">
+          <input
+            id="id"
+            name="id"
+            #id="ngModel"
+            type="text"
+            [(ngModel)]="this.corrida.id"
+            readonly
+          />
+          <label class="active" for="data-inicio">Id</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <select
+            id="tipo-corrida"
+            name="tipo-corrida"
+            #tipoCorrida="ngModel"
+            [(ngModel)]="this.corrida.tipo"
+            class="validate"
+            required
+          >
+            <option
+              *ngFor="let tipo of tiposCorrida"
+              [value]="tipo"
+              [selected]="tipo === this.corrida.tipo"
+            >
+              {{ tipo }}
+            </option>
+          </select>
+          <label>Tipo de Treino *</label>
+          <div
+            class="red-text"
+            *ngIf="tipoCorrida.errors?.['required']"
+          >
+            Por favor, informe o tipo de corrida.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m3">
+          <input
+            id="data-inicio"
+            name="data-inicio"
+            #dataInicio="ngModel"
+            type="date"
+            class="validate"
+            [(ngModel)]="this.corrida.dataInicio"
+            required
+          />
+          <label for="data-inicio">Data Inicial *</label>
+          <div
+            class="red-text"
+            *ngIf="dataInicio.errors?.['required'] && dataInicio.touched"
+          >
+            Por favor, informe a data inicial.
+          </div>
+        </div>
+
+        <div class="input-field col s6 m3">
+          <input
+            id="hora-inicio"
+            name="hora-inicio"
+            #horaInicio="ngModel"
+            type="time"
+            class="validate"
+            [(ngModel)]="this.corrida.horaInicio"
+            required
+          />
+          <label for="hora-inicio">Hora Inicial *</label>
+          <div
+            class="red-text"
+            *ngIf="horaInicio.errors?.['required'] && horaInicio.touched"
+          >
+            Por favor, informe a hora inicial.
+          </div>
+        </div>
+
+        <div class="input-field col s6 m3">
+          <input
+            id="data-final"
+            name="data-final"
+            #dataFinal="ngModel"
+            type="date"
+            class="validate"
+            [(ngModel)]="this.corrida.dataFinal"
+            required
+          />
+          <label for="data-final">Data Final *</label>
+          <div
+            class="red-text"
+            *ngIf="dataFinal.errors?.['required'] && dataFinal.touched"
+          >
+            Por favor, informe a data final.
+          </div>
+        </div>
+
+        <div class="input-field col s6 m3">
+          <input
+            id="hora-final"
+            name="hora-final"
+            #horaFinal="ngModel"
+            type="time"
+            class="validate"
+            [(ngModel)]="this.corrida.horaFinal"
+            required
+          />
+          <label for="hora-final">Hora Final *</label>
+          <div
+            class="red-text"
+            *ngIf="horaFinal.errors?.['required'] && horaFinal.touched"
+          >
+            Por favor, informe a hora final.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input
+            id="distancia-percorrida"
+            name="distancia-percorrida"
+            class="validate"
+            #distancia="ngModel"
+            type="text"
+            [(ngModel)]="this.corrida.distancia"
+            pattern="^(\d+)?([,]?\d{0,1})?$"
+            required
+          />
+          <label class="active" for="distancia-percorrida">Distância Percorrida (Km) *</label>
+          <div class="red-text" *ngIf="distancia.invalid && distancia.touched">
+            Por favor, informe uma distância válida. Exemplo: 3,5.
+          </div>
+        </div>
+        <div class="input-field col s12 m6">
+          <input
+            id="frequencia-cardiaca"
+            name="frequencia-cardiaca"
+            class="validate"
+            #fcm="ngModel"
+            type="text"
+            [(ngModel)]="this.corrida.fcm"
+            pattern="^[0-9]{0,3}$"
+            required
+          />
+          <label class="active" for="frequencia-cardiaca"
+            >Frequência Cardíaca Média (Batimentos/minuto)</label
+          >
+          <div class="red-text" *ngIf="fcm.invalid && fcm.touched">
+            Por favor, informe uma frequência cardíaca válida.
+          </div>
+        </div>
+      </div>
+      <div class="row right-align">
+        <button
+          class="waves-effect waves-light btn blue darken-2"
+          type="submit"
+          [disabled]="!form.valid"
+        >
+          <i class="material-icons left">save</i>Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

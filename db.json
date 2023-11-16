@@ -1,0 +1,88 @@
+{
+  "corridas": [
+    {
+      "id": 3,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": "5,8",
+      "pace": "10:21",
+      "tipo": "Leve",
+      "fcm": "165",
+      "navigationId": 8
+    },
+    {
+      "id": 4,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": "10",
+      "pace": "6:00",
+      "tipo": "Longo",
+      "fcm": "150",
+      "navigationId": 2
+    },
+    {
+      "id": 5,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": "8",
+      "pace": "7:30",
+      "tipo": "Intervalado",
+      "fcm": 154,
+      "navigationId": 7
+    },
+    {
+      "id": 6,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": "10,5",
+      "pace": "5:43",
+      "tipo": "Longo",
+      "fcm": 154,
+      "navigationId": 11
+    },
+    {
+      "id": 7,
+      "dataInicio": "2023-11-03",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-03",
+      "horaFinal": "08:00",
+      "distancia": "10,5",
+      "pace": "5:43",
+      "tipo": "Longo",
+      "fcm": 154,
+      "navigationId": 13
+    },
+    {
+      "id": "432",
+      "dataInicio": "0010-10-10",
+      "horaInicio": "10:10",
+      "dataFinal": "0010-10-10",
+      "horaFinal": "11:10",
+      "distancia": "11,5",
+      "pace": "5:13",
+      "tipo": "Intervalado",
+      "fcm": "140",
+      "navigationId": 3
+    },
+    {
+      "id": "485",
+      "dataInicio": "2023-11-15",
+      "horaInicio": "07:00",
+      "dataFinal": "2023-11-15",
+      "horaFinal": "10:10",
+      "distancia": "42",
+      "pace": "4:31",
+      "tipo": "Fartlek",
+      "fcm": "150",
+      "navigationId": 3
+    }
+  ]
+}
